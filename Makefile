@@ -77,6 +77,7 @@ default: link
 
 link: $(OFILES) linker.ld
 	$(CC) -T linker.ld -o kernel.o -ffreestanding -nostdlib $(OFILES) -lgcc
+	[ `nm kernel.o | grep "T _start" | cut -f1 -d" "` = "80200000" ]
 	$(OBJCOPY) kernel.o -O binary kernel.bin
 
 -include $(DFILES)

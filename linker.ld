@@ -3,7 +3,6 @@
  */
 OUTPUT_FORMAT("elf32-littlearm", "elf32_bigarm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
-
 ENTRY(_start)
 
 MEMORY
@@ -45,6 +44,7 @@ SECTIONS
 		__text_load = LOADADDR(.text);
 		__text_start = .;
 
+		*start.o (.text)
 		*(.text .text.*)
 		*(.rodata .rodata.*)
 

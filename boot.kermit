@@ -1,0 +1,24 @@
+#!/usr/bin/kermit
+#
+# Based on http://blog.mezeske.com/?p=483.
+
+set line /dev/serial/by-path/platform-bcm2708_usb-usb-0:1.4:1.0-port0
+set speed 115200
+set serial 8n1
+
+set flow-control none
+set file type bin
+set carrier-watch off
+set prefixing all
+set modem none
+
+echo "Reset board now."
+input 60 "Hit any key to stop autoboot"
+output " "
+input 5 "OMAP3 beagleboard.org #"
+lineout "loadb"
+send /home/david/kernel.bin
+input 5 "OMAP3 beagleboard.org #"
+lineout "go 0x80200000"
+
+connect

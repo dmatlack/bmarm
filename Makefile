@@ -69,11 +69,23 @@ OFILES = $(patsubst %.c,%.o,$(CFILES)) $(patsubst %.S,%.o,$(SFILES))
 DFILES = $(patsubst %.o,%.d,$(OFILES))
 
 ##############################################################################
+# Misc Defines
+
+#
+# Host connected to beagleboard UART port.
+#
+SERIAL_SERVER = "david@raspberrypi"
+
+##############################################################################
 # Build Targets
 
-.PHONY: default clean
+.PHONY: default clean install
 
 default: link
+
+install: link
+	scp kernel.bin boot.kermit $(SERIAL_SERVER):
+	ssh $(SERIAL_SERVER)
 
 link: $(OFILES) linker.ld
 	$(CC) -T linker.ld -o kernel.o -ffreestanding -nostdlib $(OFILES) -lgcc

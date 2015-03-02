@@ -4,12 +4,18 @@ References
  * http://www.state-machine.com/arm/Building_bare-metal_ARM_with_GNU.pdf
  * http://wiki.osdev.org/ARM_Beagleboard
 
+Specs
+ * TI OMAP35x: http://www.ti.com/lit/pdf/spruf98
+
 Booting on Beaglebooard:
   0. Connect to board via serial.
   1. Interrupt U-boot boot sequence.
-  2. Run 'loady' on the U-boot command-line and use minicom to transfer
-     kernel.bin to the board.
-  3. Run 'go 0x80200000' on the U-boot command-line to boot.
+  2. Run 'loady' or 'loadb' on the U-boot command-line.
+  3. Use your serial program to send kernel.bin to the board.
+  4. Run 'go 0x80200000' on the U-boot command-line to start
+     executing the kernel.
+ or
+  1. Run ./boot.kermit
 
-In order for minicom to send the boot binary over serial, install the linux
-package lrzsz.
+In order to use minicom to send the boot binary over serial, install the
+linux package lrzsz.

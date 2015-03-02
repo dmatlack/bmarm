@@ -6,7 +6,7 @@
 
 CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
-ARM_CPU = arm7tdmi
+ARM_CPU = cortex-a8
 
 ##############################################################################
 # Compiler options

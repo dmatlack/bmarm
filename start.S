@@ -1,5 +1,3 @@
-#include "beagleboard.h"
-
 .text
 
 /*
@@ -10,6 +8,8 @@
  * Thumb, 32 for ARM.
  */
 .code 32
+
+.extern main
 
 /*
  * .global makes the symbol visible to ld (allowing other partial programs,
@@ -25,27 +25,14 @@
 .func _start
 
 _start:
-	/*
-	 * Write "Hello!" to the UART
-	 */
-	ldr r0,=UART3_BASE
-	mov r1,#'H'
-	strb r1,[r0]
-	mov r1,#'e'
-	strb r1,[r0]
-	mov r1,#'l'
-	strb r1,[r0]
-	mov r1,#'l'
-	strb r1,[r0]
-	mov r1,#'o'
-	strb r1,[r0]
-	mov r1,#'!'
+	ldr r0,=main
+	bx r0
 
 	/*
 	 * Spin forever...
 	 */
 1:
-	B 1b
+	b 1b
 
 /*
  * .size name, expression

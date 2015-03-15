@@ -1,7 +1,8 @@
 #include "arm.h"
 #include "omap35x.h"
 
-#undef putchar
+extern int printf(const char *fmt, ...);
+
 int putchar(int c)
 {
 	if (c == '\n')
@@ -13,11 +14,10 @@ int putchar(int c)
 
 int puts(const char *s)
 {
-	while (*s) putchar(*s++);
+	while (*s)
+		putchar(*s++);
 
-	uart3_write('\r');
-	uart3_write('\n');
-
+	putchar('\n');
 	return 0;
 }
 
@@ -35,8 +35,7 @@ int main(void)
 	uart3_init();
 
 	printf("Hello World!\n");
-	printf("\n\n" BANNER "\n\n");
-	printf("by David Matlack\n");
+	printf("\n\n%s\n", BANNER);
 
 	while (1);
 	return 0;

@@ -1,5 +1,4 @@
-#include <stdio.h>
-
+#include "arm.h"
 #include "omap35x.h"
 
 #undef putchar

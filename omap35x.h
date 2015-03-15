@@ -121,30 +121,10 @@
 #define LCR_8N1 0x3
 
 #ifndef ASSEMBLER
-#include <stdint.h>
-
-/*
- * Referencing arch/arm/include/asm/barrier.h from the Linux Kernel.
- */
-#define barrier() asm volatile("" ::: "memory")
-
-/*
- * The DMB instruction Ensures that any memory access before the instruction
- * complete before any memory access after the instruction.
- */
-#define dmb() asm volatile ("dmb" ::: "memory")
-
-/*
- * The DSB instruction will not complete until all memory accesses
- * before the instruction have completed.
- */
-#define dsb(option) asm volatile ("dsb "#option ::: "memory")
-
-#define read_barrier()   dsb()
-#define write_barrier()  dsb(st)
+#include "types.h"
 
 void uart3_init(void);
-void uart3_write(uint8_t byte);
+void uart3_write(u8 byte);
 
 #endif /* !ASSEMBLER */
 

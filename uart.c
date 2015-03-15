@@ -1,3 +1,4 @@
+#include "arm.h"
 #include "omap35x.h"
 #include "types.h"
 

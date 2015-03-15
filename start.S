@@ -25,6 +25,24 @@
 .func _start
 
 _start:
+	/*
+	 * We have to zero .bss ourselves. The data sections will be
+	 * initialized.
+	 */
+	ldr r0, =__bss_load
+	ldr r1, =__bss_start
+	ldr r2, =__bss_end
+	subs r1, r2, r1		/* r1 is bss size (end - start) */
+	cmp r1, #0
+	beq run_main
+	mov r2, #0
+zero_bss:
+	strb r2, [r0], #1	/* store 0 at [r0], then increment r0 by 1 */
+	subs r1, r1, #1		/* r1 -= 1 */
+	bne zero_bss
+
+run_main:
+	/* TODO: initialize stack pointer! */
 	ldr r0,=main
 	bx r0
 

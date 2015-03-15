@@ -1,4 +1,4 @@
-#include "../types.h"
+#include <bmarm/types.h>
 
 /* define these to use printf */
 extern int putchar(int c);

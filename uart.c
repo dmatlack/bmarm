@@ -1,6 +1,6 @@
-#include "arm.h"
-#include "omap35x.h"
-#include "types.h"
+#include <bmarm/arm.h>
+#include <bmarm/omap35x.h>
+#include <bmarm/types.h>
 
 static inline u8 reg_read(unsigned int reg)
 {

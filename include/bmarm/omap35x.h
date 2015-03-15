@@ -121,8 +121,8 @@
 #define LCR_8N1 0x3
 
 #ifndef ASSEMBLER
-#include "types.h"
 
+#include <bmarm/types.h>
 void uart3_init(void);
 void uart3_write(u8 byte);
 

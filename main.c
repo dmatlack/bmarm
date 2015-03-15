@@ -1,5 +1,5 @@
-#include "arm.h"
-#include "omap35x.h"
+#include <bmarm/arm.h>
+#include <bmarm/omap35x.h>
 
 extern int printf(const char *fmt, ...);
 

@@ -54,6 +54,11 @@ CFLAGS += -Wall -Werror
 #
 CFLAGS += -g
 
+#
+# Includes
+#
+CFLAGS += -Iinclude
+
 ##############################################################################
 # Source Files
 

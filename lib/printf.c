@@ -20,9 +20,6 @@ static void flush(void)
 
 static void print_char(char c)
 {
-	putchar(c);
-	return;
-
 	printf_buffer[printf_index++] = c;
 
 	if (printf_index == PRINTF_BUFFER_MAX || c == '\n')
